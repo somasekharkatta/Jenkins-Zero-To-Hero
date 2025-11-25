@@ -36,7 +36,7 @@ pipeline {
             steps {
                 sh """
                     cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
-                    docker build -t somasekhar/demo-app:latest .
+                    docker build -t sekharcloudtrine/demo-app:latest .
                 """
             }
         }
@@ -48,7 +48,7 @@ pipeline {
 
                     sh """
                         echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                        docker push somasekhar/demo-app:latest
+                        docker push sekharcloudtrine/demo-app:latest
                     """
                 }
             }
