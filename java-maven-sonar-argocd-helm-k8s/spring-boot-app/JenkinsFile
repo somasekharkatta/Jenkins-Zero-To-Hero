@@ -21,9 +21,10 @@ pipeline {
     steps {
         withSonarQubeEnv('sonar-server') {
             sh """
+                cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
                 mvn sonar:sonar \
-                  -Dsonar.projectKey=demo-app \
-                  -Dsonar.host.url=http://13.203.212.102:9000
+                    -Dsonar.projectKey=demo-app \
+                    -Dsonar.host.url=http://13.203.212.102:9000
             """
         }
     }
