@@ -30,14 +30,7 @@ pipeline {
     }
 }
 
-  stage('Build Docker Image') {
-            steps {
-                sh """
-                    cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
-                    docker build -t somasekhar/demo-app:latest .
-                """
-            }
-        }
+  
 
         stage('Build Docker Image') {
             steps {
