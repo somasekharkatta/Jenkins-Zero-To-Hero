@@ -48,37 +48,23 @@ pipeline {
     }
 
    stage('Update Deployment File') {
-  environment {
-    GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
-    GIT_USER_NAME = "somasekharkatta"
-  }
-  steps {
-    withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
-
-      sh """
-        git config --global user.email "kattasomasekhar980@gmail.com"
-        git config --global user.name "somasekharkatta"
-
-        echo "Before update:"
-        cat java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
-
-        sed -i "s/latest/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
-
-        echo "After update:"
-        cat java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
-
-        git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
-
-        if git diff --cached --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "Updated image tag to ${BUILD_NUMBER}"
-          git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME}.git main
-        fi
-      """
+        environment {
+            GIT_REPO_NAME = "Jenkins-Zero-To-Hero"
+            GIT_USER_NAME = "somasekharkatta"
+        }
+        steps {
+            withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
+                sh '''
+                    git config user.email "kattasomasekhar980@gmail.com"
+                    git config user.name "somu"
+                    BUILD_NUMBER=${BUILD_NUMBER}
+                    sed -i "s/23/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+                    git add java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                    git push https://${GITHUB_TOKEN}@github.com/${GIT_USER_NAME}/${GIT_REPO_NAME} HEAD:main
+                '''
+            }
+        }
     }
   }
-}
-
-}
 }
