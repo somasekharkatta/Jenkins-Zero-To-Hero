@@ -62,7 +62,7 @@ pipeline {
         echo "Before update:"
         cat java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
 
-        sed -i "s/replaceImageTag/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
+        sed -i "s/latest/${BUILD_NUMBER}/g" java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
 
         echo "After update:"
         cat java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
