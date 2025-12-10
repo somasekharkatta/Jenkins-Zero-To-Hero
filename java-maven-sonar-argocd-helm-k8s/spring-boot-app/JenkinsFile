@@ -27,7 +27,7 @@ stage('Static Code Analysis') {
         }
       }
     }
-/*
+
     stage('Build and Push Docker Image') {
       environment {
         DOCKER_IMAGE = "sekharcloudtrine/ultimate-cicd:${BUILD_NUMBER}"
@@ -44,7 +44,7 @@ stage('Static Code Analysis') {
         }
       }
     }
-*/
+
 
 }
 }
