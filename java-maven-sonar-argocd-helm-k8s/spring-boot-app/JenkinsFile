@@ -9,7 +9,7 @@ pipeline {
             url: 'https://github.com/somasekharkatta/Jenkins-Zero-To-Hero.git'
       }
     }
-
+/*
 stage('Build') {
       steps {
         sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean package'
@@ -42,5 +42,6 @@ stage('Static Code Analysis') {
         }
       }
     }
+*/
 }
 }
