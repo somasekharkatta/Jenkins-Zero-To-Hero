@@ -19,7 +19,7 @@ stage('Build') {
 
 stage('Static Code Analysis') {
       environment {
-        SONAR_URL = "http://43.205.237.99:9000"
+        SONAR_URL = "http://43.204.30.232:9000"
       }
       steps {
         withCredentials([string(credentialsId: 'sonar', variable: 'SONAR_AUTH_TOKEN')]) {
