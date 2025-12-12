@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent {label agent-1}
 
   stages {
 
@@ -9,6 +9,7 @@ pipeline {
             url: 'https://github.com/somasekharkatta/Jenkins-Zero-To-Hero.git'
       }
     }
+/*
 
 stage('Build') {
       steps {
@@ -64,6 +65,7 @@ stage('Update Deployment File') {
             }
         }
     }
+*/
 
 
 }
