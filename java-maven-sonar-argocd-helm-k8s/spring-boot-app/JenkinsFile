@@ -16,12 +16,12 @@ stage('Build') {
         sh 'cd java-maven-sonar-argocd-helm-k8s/spring-boot-app && mvn clean package'
       }
     }
-/*
+
 
 
 stage('Static Code Analysis') {
       environment {
-        SONAR_URL = "http://43.204.30.232:9000"
+        SONAR_URL = "http://13.233.190.167:9000"
       }
       steps {
         withCredentials([string(credentialsId: 'sonar', variable: 'SONAR_AUTH_TOKEN')]) {
